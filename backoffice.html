@@ -112,7 +112,7 @@
                   />
                 </div>
                 <button class="btn btn-success mt-2" id="add-button">
-                  Aggiungi
+                  Add Album
                 </button>
                 <div
                   class="alert alert-success hide"
@@ -123,21 +123,25 @@
                 </div>
               </div>
             </div>
+            <div class="alert alert-danger hide" role="alert" id="deleteAlert">
+              Successfully deleted Album!
+            </div>
+            <div class="alert alert-warning hide" role="alert" id="editAlert">
+              Successfully modified Album!
+            </div>
           </form>
           <div class="hide" id="btn-container">
             <button class="btn btn-warning mt-2" id="edit-button">
-              Modifica
+              Modify
             </button>
+
             <button
               class="btn btn-danger mt-2"
               id="delete-button"
               onclick="return confirm('Are you sure to delete this Album?')"
             >
-              Elimina
+              Delete
             </button>
-            <div class="alert alert-danger hide" role="alert" id="deleteAlert">
-              Successfully deleted Album!
-            </div>
           </div>
         </div>
       </div>

@@ -16,6 +16,14 @@ const deleteAlertFunction = function () {
   form.reset();
 };
 
+const editAlert = function () {
+  const alert3 = document.getElementById("editAlert");
+  alert3.classList.remove("hide");
+  form.reset();
+
+  alert3.classList.add("exit");
+};
+
 const deleteAlbums = function () {
   fetch("https://striveschool-api.herokuapp.com/api/product/" + eventId, {
     method: "DELETE",
@@ -43,6 +51,8 @@ const deleteAlbums = function () {
     });
 };
 
+// FETCH PUT
+
 const editAlbums = function (editedProduct) {
   fetch("https://striveschool-api.herokuapp.com/api/product/" + eventId, {
     method: "PUT",
@@ -67,6 +77,7 @@ const editAlbums = function (editedProduct) {
     })
     .catch((err) => {
       console.log(err);
+      editAlert();
     });
 };
 
