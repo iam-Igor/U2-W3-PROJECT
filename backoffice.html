@@ -109,6 +109,13 @@
                 <button class="btn btn-success mt-2" id="add-button">
                   Aggiungi
                 </button>
+                <div
+                  class="alert alert-success hide"
+                  role="alert"
+                  id="successAlert"
+                >
+                  Album addedd correctly!
+                </div>
               </div>
             </div>
           </form>
@@ -116,9 +123,16 @@
             <button class="btn btn-warning mt-2" id="edit-button">
               Modifica
             </button>
-            <button class="btn btn-danger mt-2" id="delete-button">
+            <button
+              class="btn btn-danger mt-2"
+              id="delete-button"
+              onclick="return confirm('Are you sure?')"
+            >
               Elimina
             </button>
+            <div class="alert alert-danger hide" role="alert" id="deleteAlert">
+              Successfully deleted Album!
+            </div>
           </div>
         </div>
       </div>

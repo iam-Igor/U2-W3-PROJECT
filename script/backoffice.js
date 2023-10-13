@@ -2,6 +2,20 @@ const addressBarContent = new URLSearchParams(location.search);
 const eventId = addressBarContent.get("eventID");
 console.log(eventId);
 
+const alertOkFunction = function () {
+  const alert = document.getElementById("successAlert");
+  alert.classList.remove("hide");
+  form.reset();
+
+  alert.classList.add("exit");
+};
+
+const deleteAlertFunction = function () {
+  const alert2 = document.getElementById("deleteAlert");
+  alert2.classList.remove("hide");
+  form.reset();
+};
+
 const deleteAlbums = function () {
   fetch("https://striveschool-api.herokuapp.com/api/product/" + eventId, {
     method: "DELETE",
@@ -21,6 +35,7 @@ const deleteAlbums = function () {
     })
     .catch((err) => {
       console.log(err);
+      deleteAlertFunction();
     });
 };
 
@@ -136,6 +151,7 @@ form.addEventListener("submit", function (e) {
     .then((res) => {
       if (res.ok) {
         console.log("Oggetto salvato");
+        alertOkFunction();
       } else {
         throw new Error("Errore durante la richiesta");
       }
