@@ -35,9 +35,14 @@ fetch("https://striveschool-api.herokuapp.com/api/product", {
 })
   .then((res) => {
     if (res.ok) {
+      console.log(res);
       return res.json();
+    } else if (res.status >= 400) {
+      alert("Problem with the request try again later.");
+    } else if (res.status >= 500) {
+      alert("Internal server error.");
     } else {
-      throw new Error("Error");
+      throw new Error("Generic error.");
     }
   })
 

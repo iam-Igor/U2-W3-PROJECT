@@ -104,7 +104,12 @@
                   required
                 ></textarea>
                 <div class="mt-2">
-                  <input type="reset" class="btn btn-secondary" value="Reset" />
+                  <input
+                    type="reset"
+                    class="btn btn-secondary"
+                    value="Reset"
+                    onclick="return confirm('Are you sure to reset all fields?')"
+                  />
                 </div>
                 <button class="btn btn-success mt-2" id="add-button">
                   Aggiungi
@@ -126,7 +131,7 @@
             <button
               class="btn btn-danger mt-2"
               id="delete-button"
-              onclick="return confirm('Are you sure?')"
+              onclick="return confirm('Are you sure to delete this Album?')"
             >
               Elimina
             </button>

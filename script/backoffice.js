@@ -29,8 +29,12 @@ const deleteAlbums = function () {
     .then((res) => {
       if (res.ok) {
         console.log("Album eliminato");
+      } else if (res.status >= 400) {
+        alert("Problem with the request try again later.");
+      } else if (res.status >= 500) {
+        alert("Internal server error.");
       } else {
-        throw new Error("error");
+        throw new Error("Generic error.");
       }
     })
     .catch((err) => {
@@ -53,8 +57,12 @@ const editAlbums = function (editedProduct) {
     .then((res) => {
       if (res.ok) {
         console.log("Album modificato");
+      } else if (res.status >= 400) {
+        alert("Problem with the request try again later.");
+      } else if (res.status >= 500) {
+        alert("Internal server error.");
       } else {
-        throw new Error("error");
+        throw new Error("Generic error.");
       }
     })
     .catch((err) => {
@@ -72,8 +80,12 @@ if (eventId) {
     .then((res) => {
       if (res.ok) {
         return res.json();
+      } else if (res.status >= 400) {
+        alert("Problem with the request try again later.");
+      } else if (res.status >= 500) {
+        alert("Internal server error.");
       } else {
-        throw new Error();
+        throw new Error("Generic error.");
       }
     })
 
@@ -152,8 +164,12 @@ form.addEventListener("submit", function (e) {
       if (res.ok) {
         console.log("Oggetto salvato");
         alertOkFunction();
+      } else if (res.status >= 400) {
+        alert("Problem with the request try again later.");
+      } else if (res.status >= 500) {
+        alert("Internal server error.");
       } else {
-        throw new Error("Errore durante la richiesta");
+        throw new Error("Generic error.");
       }
     })
     .catch((err) => {
