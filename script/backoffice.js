@@ -24,6 +24,45 @@ const editAlert = function () {
   alert3.classList.add("exit");
 };
 
+// SEZIONE LOGIN
+
+const username = "Admin";
+const password = "Epicode";
+
+const loginForm = document.getElementById("login-form");
+const formContainer = document.getElementById("login-container");
+
+loginForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const usernameInput = document.getElementById("username-input");
+  const passwordInput = document.getElementById("password-input");
+  const alertLogin = document.getElementById("alert-login");
+  const loginInfo = document.getElementById("login-details");
+
+  if (usernameInput.value === username && passwordInput.value === password) {
+    const name = document.getElementById("name");
+    const description = document.getElementById("description");
+    const brand = document.getElementById("brand");
+    const price = document.getElementById("price");
+    const imgUrl = document.getElementById("img-url");
+
+    name.readOnly = !name.readOnly;
+    description.readOnly = !description.readOnly;
+    brand.readOnly = !brand.readOnly;
+    price.readOnly = !price.readOnly;
+    imgUrl.readOnly = !imgUrl.readOnly;
+
+    alertLogin.classList.add("d-none");
+    formContainer.classList.add("d-none");
+    loginInfo.classList.remove("d-none");
+  } else {
+    const alertLogin = document.getElementById("alert-login");
+
+    alertLogin.classList.remove("d-none");
+  }
+});
+
 const deleteAlbums = function () {
   fetch("https://striveschool-api.herokuapp.com/api/product/" + eventId, {
     method: "DELETE",
@@ -175,6 +214,7 @@ form.addEventListener("submit", function (e) {
     .then((res) => {
       if (res.ok) {
         console.log("Oggetto salvato");
+
         alertOkFunction();
       } else if (res.status >= 400) {
         alert("Problem with the request try again later.");
