@@ -38,7 +38,7 @@ hintIcon.addEventListener("click", function () {
 
 // SEZIONE LOGIN
 
-const username = "Admin";
+const username = "Bilbo";
 const password = "Baggins";
 
 // QUI RECUPERIAMO GLI ITEM DEL SESSION STORAGE AD OGNI AVVIO DELLA PAGINA
