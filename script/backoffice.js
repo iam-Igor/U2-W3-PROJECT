@@ -27,11 +27,19 @@ const editAlert = function () {
 
   alert3.classList.add("exit");
 };
+const hintAlert = document.getElementById("hint-login");
+const hintIcon = document.getElementById("hint");
+const alertLogin = document.getElementById("alert-login");
+
+hintIcon.addEventListener("click", function () {
+  hintAlert.classList.remove("d-none");
+  alertLogin.classList.add("d-none");
+});
 
 // SEZIONE LOGIN
 
 const username = "Admin";
-const password = "Epicode";
+const password = "Baggins";
 
 // QUI RECUPERIAMO GLI ITEM DEL SESSION STORAGE AD OGNI AVVIO DELLA PAGINA
 
@@ -99,15 +107,16 @@ loginForm.addEventListener("submit", function (e) {
     alertLogin.classList.add("d-none");
     formContainer.classList.add("d-none");
     loginInfo.classList.remove("d-none");
+    hintAlert.classList.add("d-none");
 
     editBtn.disabled = false;
     deleteBtn.disabled = false;
     addBtn.disabled = false;
   } else {
-    const alertLogin = document.getElementById("alert-login");
     loginForm.reset();
 
     alertLogin.classList.remove("d-none");
+    hintAlert.classList.add("d-none");
   }
 });
 
