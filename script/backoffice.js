@@ -37,6 +37,7 @@ const deleteAlbums = function () {
     .then((res) => {
       if (res.ok) {
         console.log("Album eliminato");
+        location.assign("main.html");
       } else if (res.status >= 400) {
         alert("Problem with the request try again later.");
       } else if (res.status >= 500) {
@@ -67,6 +68,7 @@ const editAlbums = function (editedProduct) {
     .then((res) => {
       if (res.ok) {
         console.log("Album modificato");
+        location.assign("main.html");
       } else if (res.status >= 400) {
         alert("Problem with the request try again later.");
       } else if (res.status >= 500) {
@@ -77,7 +79,6 @@ const editAlbums = function (editedProduct) {
     })
     .catch((err) => {
       console.log(err);
-      editAlert();
     });
 };
 
