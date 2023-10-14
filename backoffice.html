@@ -49,10 +49,12 @@
                   >Backoffice</a
                 >
               </li>
-              <li class="nav-item offset-md-8 d-none" id="login-details">
+              <hr class="border border-dark d-md-none" />
+              <li class="nav-item offset-md-8 d-none d-flex" id="login-details">
                 <a class="nav-link" href="backoffice.html"
                   >Logged in as: <span class="fw-bold">Admin</span>
                 </a>
+                <a class="btn btn-primary ms-2" id="logout-btn">Logout</a>
               </li>
               <li class="offset-md-8" id="login-container">
                 <form class="d-flex" id="login-form">
@@ -145,7 +147,7 @@
                     onclick="return confirm('Are you sure to reset all fields?')"
                   />
                 </div>
-                <button class="btn btn-success mt-2" id="add-button">
+                <button class="btn btn-success mt-2" id="add-button" disabled>
                   Add Album
                 </button>
                 <div
@@ -165,11 +167,12 @@
             </div>
           </form>
           <div class="hide" id="btn-container">
-            <button class="btn btn-warning mt-2" id="edit-button">
+            <button class="btn btn-warning mt-2" id="edit-button" disabled>
               Modify
             </button>
 
             <button
+              disabled
               class="btn btn-danger mt-2"
               id="delete-button"
               onclick="return confirm('Are you sure to delete this Album?')"

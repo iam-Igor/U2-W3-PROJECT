@@ -2,6 +2,10 @@ const addressBarContent = new URLSearchParams(location.search);
 const eventId = addressBarContent.get("eventID");
 console.log(eventId);
 
+const editBtn = document.getElementById("edit-button");
+const deleteBtn = document.getElementById("delete-button");
+const addBtn = document.getElementById("add-button");
+
 const alertOkFunction = function () {
   const alert = document.getElementById("successAlert");
   alert.classList.remove("hide");
@@ -29,8 +33,39 @@ const editAlert = function () {
 const username = "Admin";
 const password = "Epicode";
 
+// QUI RECUPERIAMO GLI ITEM DEL SESSION STORAGE AD OGNI AVVIO DELLA PAGINA
+
+const storedUsername = sessionStorage.getItem("username");
+const storedPassword = sessionStorage.getItem("password");
+
 const loginForm = document.getElementById("login-form");
 const formContainer = document.getElementById("login-container");
+
+// SE I VALORI NELLO STORAGE SONO UGUALI A USERNAME E PASSWORD TOGLIE LA PROPRIETA' READONLY AL FORM ED E' EDITABILE
+// SIGNIFICA CHE ABBIAMO LE CREDENZIALI DI ADMIN
+
+if (storedUsername === username && storedPassword === password) {
+  const name = document.getElementById("name");
+  const description = document.getElementById("description");
+  const brand = document.getElementById("brand");
+  const price = document.getElementById("price");
+  const imgUrl = document.getElementById("img-url");
+
+  name.readOnly = !name.readOnly;
+  description.readOnly = !description.readOnly;
+  brand.readOnly = !brand.readOnly;
+  price.readOnly = !price.readOnly;
+  imgUrl.readOnly = !imgUrl.readOnly;
+  const loginInfo = document
+    .getElementById("login-details")
+    .classList.remove("d-none");
+
+  formContainer.classList.add("d-none");
+
+  editBtn.disabled = false;
+  deleteBtn.disabled = false;
+  addBtn.disabled = false;
+}
 
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -40,7 +75,14 @@ loginForm.addEventListener("submit", function (e) {
   const alertLogin = document.getElementById("alert-login");
   const loginInfo = document.getElementById("login-details");
 
+  sessionStorage.setItem("username", usernameInput.value);
+  sessionStorage.setItem("password", passwordInput.value);
+
+  // QUI SALVIAMO LE CREDENZIALI LA PRIMA VOLTA QUANDO SI FA LOGIN CON SET ITEM
+
   if (usernameInput.value === username && passwordInput.value === password) {
+    sessionStorage.setItem("username", usernameInput.value);
+    sessionStorage.setItem("password", passwordInput.value);
     const name = document.getElementById("name");
     const description = document.getElementById("description");
     const brand = document.getElementById("brand");
@@ -53,14 +95,29 @@ loginForm.addEventListener("submit", function (e) {
     price.readOnly = !price.readOnly;
     imgUrl.readOnly = !imgUrl.readOnly;
 
+    // SE LE CREDENZIALI SONO ERRATE APPARIRA' UN ALERT BOOTSTRAP
     alertLogin.classList.add("d-none");
     formContainer.classList.add("d-none");
     loginInfo.classList.remove("d-none");
+
+    editBtn.disabled = false;
+    deleteBtn.disabled = false;
+    addBtn.disabled = false;
   } else {
     const alertLogin = document.getElementById("alert-login");
+    loginForm.reset();
 
     alertLogin.classList.remove("d-none");
   }
+});
+
+// LOGOUT BUTTON RIMUOVE DALLO STORAGE LE CREDENZIALI E RICARICA LA PAGINA
+
+const logoutBtn = document.getElementById("logout-btn");
+logoutBtn.addEventListener("click", function () {
+  sessionStorage.removeItem("username");
+  sessionStorage.removeItem("password");
+  location.reload();
 });
 
 const deleteAlbums = function () {
@@ -157,8 +214,6 @@ if (eventId) {
 
       const btnContainer = document.getElementById("btn-container");
       btnContainer.classList.remove("hide");
-      const editBtn = document.getElementById("edit-button");
-      const deleteBtn = document.getElementById("delete-button");
 
       editBtn.addEventListener("click", function () {
         const editedProduct = {

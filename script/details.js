@@ -8,7 +8,7 @@ const generateSingleCard = function (singleData) {
   const newCol2 = document.createElement("div");
   newCol2.classList.add("col");
 
-  newCol2.innerHTML = `<div class="card mb-3" ">
+  newCol2.innerHTML = `<div class="card mb-3 pb-2 pb-md-0">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="${singleData.imageUrl}" class="img-fluid rounded-start" alt="${singleData.name}">
